@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Your Order</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../css/style.css" media="screen" type="text/css" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.store.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src = "../js/jquery.nav.js"></script>
+</head>
+
+<body id="checkout-page">
+
+    <div id="nav-details">
+        <div id="nav-details-content"></div>
+     </div>
+  
+
+    <div id="site">
+        <div id="content">
+            <h1>Your Order</h1>
+            <table id="checkout-cart" class="shopping-cart">
+                <thead>
+                    <tr>
+                        <th scope="col" colspan="2" style="text-align: center;">Item</th>
+                        <th scope="col" style="text-align: center;">Qty</th>
+                        <th scope="col" style="text-align: center;">Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+            <div id="pricing">
+
+                <p id="shipping">
+                    <strong>Shipping</strong>: <span id="sshipping"></span>
+                </p>
+
+                <p id="sub-total">
+                    <strong>Total</strong>: <span id="stotal"></span>
+                </p>
+            </div>
+
+            <div id="user-details" style="text-align: center;">
+                <h2>Your Details</h2>
+                <div id="user-details-content"></div>
+            </div>
+
+
+
+            <!--form id="paypal-form" action="" method="post">
+                <input type="hidden" name="cmd" value="_cart" />
+                <input type="hidden" name="upload" value="1" />
+                <input type="hidden" name="business" value="" />
+
+                <input type="hidden" name="currency_code" value="" />
+                <input type="submit" id="paypal-btn" class="btn" value="Pay with PayPal"
+                    style="background-color: #FCB941; font-weight: bold; margin-left: auto; margin-right: auto; display: block;" />
+            </form-->
+
+            <div id="user-details" style="text-align: center;">
+                <h2>Proceed with Payment</h2>
+                <!-- Replace "test" with your own sandbox Business account app client ID -->
+                <script src="https://www.paypal.com/sdk/js?client-id=Af80wXJFUK1FPmAF8RRVX8smI8hr11mxRiTbjzwSw2RycTJmioLQnRmSIjLenEmCrThwpTHimZR7s2GZ&currency=USD"></script>
+                <!-- Set up a container element for the button -->
+                <div id="paypal-button-container"></div>
+                <script>
+                   this.cartPrefix = "Furniture-";
+                   this.total = this.cartPrefix + "total";
+                   this.storage = sessionStorage; 
+                paypal.Buttons({
+                    // Sets up the transaction when a payment button is clicked
+                    createOrder: (data, actions) => {
+                    return actions.order.create({
+                        purchase_units: [{
+                        amount: {
+                            value: this.storage.getItem( this.total ) // Can also reference a variable or function
+                        }
+                        }]
+                    });
+                    },
+                    // Finalize the transaction after payer approval
+                    onApprove: (data, actions) => {
+                    return actions.order.capture().then(function(orderData) {
+                        // Successful capture! For dev/demo purposes:
+                        console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                        const transaction = orderData.purchase_units[0].payments.captures[0];
+                        //alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
+                        // When ready to go live, remove the alert and show a success message within this page. For example:
+                         const element = document.getElementById('paypal-button-container');
+                         element.innerHTML = '<h1>Your payment has been processed successfully. Thank you for using PayPal!</h1>';
+                        // Or go to another URL:  actions.redirect('thank_you.html');
+                    });
+                    }
+                }).render('#paypal-button-container');
+                </script>
+            </div>
+        </div>
+    </div>
+
+    <section id="footer" style="margin-top: 40px;">
+        <footer class="container">
+            <div class="footer-middle">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-s6 col-lg-3">
+                            <div class="widget widget-about">
+                                <img src="../images/products/logo-icon.png" class="footer-logo" alt="Footer Logo"
+                                    width="50" height="50">
+                                <p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu
+                                    vulputate magna eros eu erat. </p>
+
+                                <div class="widget-call">
+                                    <i class="icon-phone"></i>
+                                    Got Question? Call us 24/7
+                                    <a href="tel:#" style="color: #FCB941;">+9193929099</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="widget">
+                                <h4 class="widget-title">Useful Links</h4>
+
+                                <ul class="widget-list">
+                                    <li><a href="about.html" style="color: #FCB941;">About Company</a></li>
+                                    <li><a href="#" style="color: #FCB941;">Our Services</a></li>
+                                    <li><a href="#" style="color: #FCB941;">How to shop</a></li>
+                                    <li><a href="faq.html" style="color: #FCB941;">FAQ</a></li>
+                                    <li><a href="contact.html" style="color: #FCB941;">Contact us</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="widget">
+                                <h4>Customer Service</h4>
+
+                                <ul class="widget-list">
+                                    <li><a href="#" style="color: #FCB941;">Payment Methods</a></li>
+                                    <li><a href="#" style="color: #FCB941;">Money-back guarantee!</a></li>
+                                    <li><a href="#" style="color: #FCB941;">Returns</a></li>
+                                    <li><a href="#" style="color: #FCB941;">Shipping</a></li>
+                                    <li><a href="#" style="color: #FCB941;">Terms and conditions</a></li>
+                                    <li><a href="#" style="color: #FCB941;">Privacy Policy</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="widget">
+                                <h4 class="widget-title">My Account</h4>
+
+                                <ul class="widget-list">
+                                    <li><a href="#" style="color: #FCB941;">Sign In</a></li>
+                                    <li><a href="cart.html" style="color: #FCB941;">View Cart</a></li>
+                                    <li><a href="#" style="color: #FCB941;">My Wishlist</a></li>
+                                    <li><a href="#" style="color: #FCB941;">Track My Order</a></li>
+                                    <li><a href="#" style="color: #FCB941;">Help</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="container">
+                    <p style="text-align:center;">Copyright © 2019 Molla Store. All Rights Reserved.</p>
+                    <figure style="float: right;">
+                        <img src="../images/products/payments.png" alt="Payment methods" width="272" height="20">
+                    </figure>
+                </div>
+            </div>
+        </footer>
+    </section>
+
+</body>
+</html>

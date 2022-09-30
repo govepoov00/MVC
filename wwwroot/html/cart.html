@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping Cart</title>
+    <meta charset="utf-8" />
+    <link rel="icon" href="../images/products/logo-icon.png" type="image/x-icon" />
+    <meta name="viewpoint" content="width=device-width,initial-scal=1.0">
+    <meta http-equip="X-UA-compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/style.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src = "../js/jquery.nav.js"></script>
+    <script type="text/javascript" src="../js/jquery.store.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    
+</head>
+
+<body>
+    
+    <div id="nav-details">
+        <div id="nav-details-content"></div>
+     </div>
+   
+    
+       
+    <section id="cart">
+        <div id="site">
+            <header id="masthead">
+            </header>
+            <div id="content">
+                <h1>Your Shopping Cart</h1>
+                <form id="shopping-cart" action="cart.html" method="post">
+                    <table class="shopping-cart">
+                        <thead>
+                            <tr>
+                                <th scope="col" colspan="2" style="text-align: center;">Item</th>
+                                <th scope="col" style="text-align: center;">Qty</th>
+                                <th scope="col" style="text-align: center;">Price</th>
+                                <th scope="col" style="text-align: center;">Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                    <p id="sub-total">
+                        <strong>Sub Total</strong>: <span id="stotal"></span>
+                    </p>
+                    <ul id="shopping-cart-actions">
+                        
+                        <li>
+                         
+                        <input type = "button" name="update" id="update-cart" onclick = "updateCart();" class="btn" value="Update Cart" disabled="disabled" style="text-align: center;
+                        color: white;
+                        background: #294db1;
+                        margin-bottom: 0px; height: 30px;
+                        border-radius: 4px;
+                        border: 1px solid #a00;
+                        text-align: center;
+                        display: inline-block;
+                        font: 1em 'PT Serif', serif;
+                        padding: 0.3em 1em;" />
+                        
+                    </li>
+                    <li>
+                        <input type="button" name="delete" id="empty-cart" onclick = "emptyCart();" class="btn" value="Empty Cart" disabled="disabled" style="text-align: center;
+                        color: white;
+                        background: #294db1;
+                        margin-bottom: 0px; height: 30px;
+                        border-radius: 4px;
+                        border: 1px solid #a00;
+                        text-align: center;
+                        display: inline-block;
+                        font: 1em 'PT Serif', serif;
+                        padding: 0.3em 1em;"/>
+                    </li> 
+                    <li>
+                            <a href="product.html" class="btn" style="background-color:#294db1">Continue Shopping</a>
+                    </li>
+                    <li>
+                        <input type="button" onclick= "location.href='checkout.html'" value="Go To Checkout" class="btn" id="checkout" disabled="disabled" style="text-align: center;
+                        color: white;
+                        background: #294db1;
+                        margin-bottom: 0px; height: 30px;
+                        border-radius: 4px;
+                        border: 1px solid #a00;
+                        text-align: center;
+                        display: inline-block;
+                        font: 1em 'PT Serif', serif;
+                        padding: 0.3em 1em;"/>
+
+                    </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+
+  </section>
+        <script src="../js/footer.js"></script>
+
+   
+</body>
+</html>
